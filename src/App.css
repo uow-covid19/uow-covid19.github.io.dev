@@ -1,0 +1,38 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.App {
+  text-align: center;
+}
+
+.LocalAreaDataContainer {
+  display: inline-block;
+  margin: 0.25em;
+  padding: 0.5em;
+  background-color: #292929;
+  border-radius: 10px
+}
+
+.SourcesAndLinks {
+  text-align: left;
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0.25em;
+  background-color: #292929;
+  border-radius: 10px;
+}
+
+.SourcesAndLinks > ul {
+  padding: 0;
+  list-style: none;
+}
+
+.SourcesAndLinks > ul > li {
+  padding: 4px;
+}
+
+a {
+  color: #ffffff
+}
