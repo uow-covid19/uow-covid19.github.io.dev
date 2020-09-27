@@ -1,5 +1,4 @@
 import React from 'react';
-import {Helmet} from "react-helmet";
 import './App.css';
 import { LocalAreaDataContainer, SourcesAndLinks } from './Components.js'
 import { makeRequest }  from './networking.js'
@@ -27,7 +26,7 @@ class App extends React.Component {
           dataForAreaWithCode('E02006527'), // Leamington West
           dataForAreaWithCode('E02006521'), // Kenilworth South
           dataForAreaWithCode('E02001991')  // Earlsdon & Canley Gardens
-        ]
+        ].sort((e1, e2) => e1.latest_7_days < e2.latest_7_days)
       }))
     })
   }
@@ -35,10 +34,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Helmet>
-          <title>UoW COVID Tracker</title>
-          <meta name="description" content="COVID-19 stats relevant to Warwick Students" />
-        </Helmet>
         <h1>Unofficial Uni of Warwick COVID-19 case tracker</h1>
         <h2>Positive cases in the last 7 days (UK Government figures)</h2>
         {this.state.areas.map(area => (
