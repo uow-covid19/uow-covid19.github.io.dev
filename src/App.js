@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { LocalAreaDataContainer, SourcesAndLinks } from './Components.js'
+import { LocalAreaDataContainer, SourcesAndLinks, AddToHomeScreenPrompt } from './Components.js'
 import { makeRequest }  from './networking.js'
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = { areas: [] } 
   }
 
@@ -36,6 +36,8 @@ class App extends React.Component {
       <div className="App">
         <h1>Unofficial Uni of Warwick COVID-19 case tracker</h1>
         <h2>Positive cases in the last 7 days (UK Government figures)</h2>
+        <AddToHomeScreenPrompt />
+        <br />
         {this.state.areas.map(area => (
           <LocalAreaDataContainer data={area} />
         ))}
