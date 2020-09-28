@@ -22,6 +22,7 @@ export function SourcesAndLinks(props) {
       <li><a href="https://testandtrace.warwick.ac.uk/intro/">Warwick Test and Trace</a></li>
       <li>Warwick 24-Hour Helpline: +44 24 7652 3111</li>
       <li><a href="https://www.gov.uk/foreign-travel-advice">Foreign Travel Advice</a></li>
+      <li><a href="https://github.com/uow-covid19/uow-covid19.github.io.dev">Contribute to this site's development</a></li>
     </ul>
     </div>
   )

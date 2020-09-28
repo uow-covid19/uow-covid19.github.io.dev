@@ -35,8 +35,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Unofficial Uni of Warwick COVID-19 case tracker</h1>
-        <h2>Positive cases in the last 7 days (UK Government figures)</h2>
         <AddToHomeScreenPrompt />
+        <h2>Positive cases for the last 7 days "where near-complete data is available"<br />
+        (UK Government figures)</h2>
         <br />
         {this.state.areas.map(area => (
           <LocalAreaDataContainer data={area} />
