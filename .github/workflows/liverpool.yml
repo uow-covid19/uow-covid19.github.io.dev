@@ -1,8 +1,8 @@
-name: Master (UoW) Build
+name: Liverpool Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ liverpool ]
 
 jobs:
   build:
@@ -23,6 +23,5 @@ jobs:
         with:
           source-directory: 'build'
           destination-github-username: 'uow-covid19'
-          destination-repository-name: 'uow-covid19.github.io'
+          destination-repository-name: 'liverpool'
           user-email: buildbot@example.com
-
