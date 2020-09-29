@@ -8,7 +8,7 @@ Single-page React app intending to collect together COVID-19 data relevant to un
 * Run `npm start` to begin the development server.
 
 ### How to add a university 
-* Use [this link](https://www.arcgis.com/apps/webappviewer/index.html?id=47574f7a6e454dc6a42c5f6912ed7076) to find the areas you wish to addd to the dashboard. note down the MSOA Codes.
+* Use [this link](https://www.arcgis.com/apps/webappviewer/index.html?id=47574f7a6e454dc6a42c5f6912ed7076) to find the areas you wish to add to the dashboard. note down the MSOA Codes.
 * Run the development server and adjust `src/settings.js` to include the correct names and locations.
 * Once you're happy, move the file to `src/regions/` and rename it to the region name `e.g. src/regions/{region}.js`
 * Copy `package.json` as `src/packages/{region}.json` and add the correct `homepage` value (e.g. `"homepage": "{region}/"`)
