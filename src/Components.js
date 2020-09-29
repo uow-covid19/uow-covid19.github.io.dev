@@ -1,4 +1,5 @@
 import React from 'react'
+import { EXTRA_LINKS } from './settings.js'
 
 export function LocalAreaDataContainer(props) {
   let caseNumbers = props.data?.latest_7_days
@@ -19,9 +20,8 @@ export function SourcesAndLinks(props) {
     </p>
     <ul>
       <li>NHS COVID-19 App: <a href="https://apps.apple.com/gb/app/nhs-covid-19/id1520427663">iOS</a> <a href="https://play.google.com/store/apps/details?id=uk.nhs.covid19.production">Android</a></li>
-      <li><a href="https://testandtrace.warwick.ac.uk/intro/">Warwick Test and Trace</a></li>
-      <li>Warwick 24-Hour Helpline: +44 24 7652 3111</li>
       <li><a href="https://www.gov.uk/foreign-travel-advice">Foreign Travel Advice</a></li>
+      { EXTRA_LINKS.map(link => link) }
       <li><a href="https://github.com/uow-covid19/uow-covid19.github.io.dev">Contribute to this site's development</a></li>
     </ul>
     </div>
