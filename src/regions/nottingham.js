@@ -19,5 +19,5 @@ export const REGION_CODES = [
 export const EXTRA_LINKS = [
   <li><a href='https://forms.office.com/Pages/ResponsePage.aspx?id=7qe9Z4D970GskTWEGCkKHh6YksPWJp5EnnJQcOvHFxxUQ1ZPVVJJU0RJTDJITFYxVzVSQ1dUT0ZDTyQlQCN0PWcu'>Report Symptoms</a></li>,
   <li><a href='https://forms.office.com/Pages/ResponsePage.aspx?id=7qe9Z4D970GskTWEGCkKHkrlWsFnDzFNtR-2zavZvFVUNzQ4N0NVSktQNUI2U0pXWUxORUg0TEgwVCQlQCN0PWcu'>Report an incident</a></li>,
-  <li><a href='mailto:ss-student-selfisol@nottingham.ac.uk'>Email the Helpline</a>,
+  <li><a href='mailto:ss-student-selfisol@nottingham.ac.uk'>Email the Helpline</a></li>,
 ]
