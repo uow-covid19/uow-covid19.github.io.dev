@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        regions: ['warwick', 'liverpool', 'manchester']
+        regions: ['warwick', 'liverpool', 'manchester', 'newcastle']
 
     steps:
       - uses: actions/checkout@v2
