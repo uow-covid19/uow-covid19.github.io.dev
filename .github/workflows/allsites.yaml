@@ -52,4 +52,4 @@ jobs:
           destination-github-username: 'uow-covid19'
           destination-repository-name: 'uow-covid19.github.io'
           user-email: buildbot@example.com
-          target-directory: matrix.regions
+          target-directory: ${{ matrix.regions }}
