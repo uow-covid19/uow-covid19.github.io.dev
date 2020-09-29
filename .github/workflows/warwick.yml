@@ -1,8 +1,8 @@
-name: Master (UoW) Build
+name: Warwick Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ warwick ]
 
 jobs:
   build:
