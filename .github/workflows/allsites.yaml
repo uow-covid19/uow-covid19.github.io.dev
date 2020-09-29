@@ -41,6 +41,7 @@ jobs:
         run: |
           npm install
           mv "src/regions/${{ matrix.regions }}.js" "src/settings.js"
+          mv "src/packages/${{ matrix.regions }}.json" "package.json"
           npm run build
 
       - name: push to gh pages repo
