@@ -27,28 +27,29 @@ jobs:
           destination-repository-name: 'uow-covid19.github.io'
           user-email: buildbot@example.com
 
-  # build-others:
-  #   runs-on: ubuntu-latest
-  #   strategy:
-  #     matrix:
-  #       regions: [liverpool', 'manchester']
+  build-others:
+    runs-on: ubuntu-latest
+    needs: build-warwick
+    strategy:
+      matrix:
+        regions: [liverpool', 'manchester']
 
-  #   steps:
-  #     - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-  #     - name: Build project
-  #       run: |
-  #         npm install
-  #         mv "src/regions/${{ matrix.regions }}.js" "src/settings.js"
-  #         npm run build
+      - name: Build project
+        run: |
+          npm install
+          mv "src/regions/${{ matrix.regions }}.js" "src/settings.js"
+          npm run build
 
-  #     - name: push to gh pages repo
-  #       uses: uow-covid19/github-action-push-to-another-repository@master
-  #       env:
-  #         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-  #       with:
-  #         source-directory: 'build'
-  #         destination-github-username: 'uow-covid19'
-  #         destination-repository-name: 'uow-covid19.github.io'
-  #         user-email: buildbot@example.com
-  #         target-directory: matrix.regions
+      - name: push to gh pages repo
+        uses: uow-covid19/github-action-push-to-another-repository@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'build'
+          destination-github-username: 'uow-covid19'
+          destination-repository-name: 'uow-covid19.github.io'
+          user-email: buildbot@example.com
+          target-directory: matrix.regions
