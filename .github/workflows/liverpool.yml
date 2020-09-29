@@ -17,7 +17,7 @@ jobs:
           npm run build
         
       - name: push to gh pages repo
-        uses: uow-covid19/github-action-push-to-another-repository@v1.1
+        uses: uow-covid19/github-action-push-to-another-repository@v1.2
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
