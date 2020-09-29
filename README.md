@@ -22,7 +22,7 @@ jobs:
         regions: ['warwick', 'liverpool', 'manchester', '{region}']
     # ...
 ```
-* Raise a PR. Once merged, your site will appear under `uow-covid19.github.io/{region}/
+* Raise a PR. Once merged, your site will appear under `uow-covid19.github.io/{region}/`
 
 ### Contributing
 
