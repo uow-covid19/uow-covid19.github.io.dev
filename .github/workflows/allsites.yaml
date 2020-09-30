@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: find sites
-        run: echo "::set-output name=matrix::$(ls src/regions | xargs basename -s .js)"
+        run: echo "::set-output name=matrix::(${(f)$(ls src/regions | xargs basename -s .js)})"
+        shell: /bin/zsh
 
   build-sites:
     runs-on: ubuntu-latest
