@@ -5,11 +5,21 @@ on:
     branches: [ master ]
 
 jobs:
+  find-sites:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.find-sites.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: find sites
+        run: echo "::set-output name=matrix::$(ls src/regions | xargs basename -s .js)"
+
   build-sites:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        regions: ['warwick', 'liverpool', 'manchester', 'newcastle', 'oxford', 'nottingham']
+        regions: ${{ needs.find-sites.outputs.matrix }}
 
     steps:
       - uses: actions/checkout@v2
@@ -33,21 +43,21 @@ jobs:
           target-branch: 'staging'
           target-directory: ${{ matrix.regions }}
 
-  merge-staging:
-    runs-on: ubuntu-latest
-    needs: build-sites
+  # merge-staging:
+  #   runs-on: ubuntu-latest
+  #   needs: build-sites
 
-    steps:
-      - name: merge staging into master
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        run: |
-          CLONE_DIR=$(mktemp -d)
-          git config --global user.email "uow-covid19mergebot@example.com"
-          git config --global user.name "uow-covid19mergebot"
-          git clone "https://$API_TOKEN_GITHUB@github.com/uow-covid19/uow-covid19.github.io.git" "$CLONE_DIR"
-          cd $CLONE_DIR
-          git checkout master
-          git merge origin/staging
-          git push origin master
+  #   steps:
+  #     - name: merge staging into master
+  #       env:
+  #         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+  #       run: |
+  #         CLONE_DIR=$(mktemp -d)
+  #         git config --global user.email "uow-covid19mergebot@example.com"
+  #         git config --global user.name "uow-covid19mergebot"
+  #         git clone "https://$API_TOKEN_GITHUB@github.com/uow-covid19/uow-covid19.github.io.git" "$CLONE_DIR"
+  #         cd $CLONE_DIR
+  #         git checkout master
+  #         git merge origin/staging
+  #         git push origin master
 
