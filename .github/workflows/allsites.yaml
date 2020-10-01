@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: find sites
-        run: echo "::set-output name=matrix::(${(f)$(ls src/regions | xargs basename -s .js)})"
+        run: echo "::set-output name=matrix::{\"include\"\:[\"liverpool\", \"manchester\", \"newcastle\", \"nottingham\", \"oxford\", \"warwick\"]}"
         shell: /bin/zsh
 
   build-sites:
