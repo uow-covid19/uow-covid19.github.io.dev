@@ -5,15 +5,15 @@ on:
     branches: [ master ]
 
 jobs:
-  find-sites:
+  get-sites:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.find-sites.outputs.matrix }}
     steps:
       - uses: actions/checkout@v2
 
-      - name: find sites
-        run: echo "::set-output name=matrix::{\"hello\":\"world\"}"
+      - id: find-sites
+        run: echo '::set-output name=matrix::{"hello":"world}'
         shell: /bin/zsh
 
   build-sites:
