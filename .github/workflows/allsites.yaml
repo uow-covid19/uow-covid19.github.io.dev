@@ -8,12 +8,12 @@ jobs:
   get-sites:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.find-sites.outputs.tes }}
+      matrix: ${{ steps.find-sites.outputs.matrix }}
     steps:
       - uses: actions/checkout@v2
 
       - id: find-sites
-        run: echo '::set-output name=matrix::{"hello":"world"}'
+        run: echo '::set-output name=matrix::["warwick"]'
 
   build-sites:
     runs-on: ubuntu-latest
