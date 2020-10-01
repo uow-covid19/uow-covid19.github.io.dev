@@ -8,19 +8,19 @@ jobs:
   get-sites:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.find-sites.outputs.matrix }}
+      matrix: ${{ steps.find-sites.outputs.tes }}
     steps:
       - uses: actions/checkout@v2
 
       - id: find-sites
-        run: echo '::set-output name=matrix::{"hello":"world}'
-        shell: /bin/zsh
+        run: echo '::set-output name=matrix::{"hello":"world"}'
 
   build-sites:
     runs-on: ubuntu-latest
+    needs: get-sites
     strategy:
       matrix:
-        regions: ${{ needs.find-sites.outputs.matrix }}
+        regions: ${{ needs.get-sites.outputs.matrix }}
 
     steps:
       - uses: actions/checkout@v2
