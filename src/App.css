@@ -16,6 +16,10 @@ body {
   min-width: 150px;
 }
 
+.LocalAreaDataContainer > .PreviousWeeks {
+  display: inline-block;
+}
+
 .SourcesAndLinks {
   text-align: left;
   display: inline-block;
