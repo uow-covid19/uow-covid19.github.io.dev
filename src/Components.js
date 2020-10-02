@@ -1,13 +1,70 @@
 import React from 'react'
 import { EXTRA_LINKS } from './settings.js'
+import * as DayJS from 'dayjs'
+import * as IsoWeek from 'dayjs/plugin/isoWeek'
+
+DayJS.extend(IsoWeek)
+
+const format = (number) => number === -99 ? "0-2" : number
 
 export function LocalAreaDataContainer(props) {
-  let caseNumbers = props.data?.latest_7_days
+  const caseNumbers = props.data?.latest_7_days
+  
+  const latestTwoWeeks = props.data?.msoa_data
+    .sort((x, y) => (x.week < y.week))
+    .slice(0, 2)
+    .map(weekObj => {
+      const startOfWeek = DayJS().isoWeek(weekObj.week).day(1)
+      const endOfWeek = startOfWeek.day(7)
+      
+      console.log(weekObj)
+      
+      return {
+        range: `${startOfWeek.format('DD')} – ${endOfWeek.format('DD MMM')}`,
+        count: weekObj.value
+      }
+    })
+  
   return (
     <div className='LocalAreaDataContainer'>
       <h3>{ props.data?.msoa11_hclnm ?? "" }</h3>
-       <h1>{ caseNumbers === -99 ? "0-2" : caseNumbers }</h1>
-     </div>
+      
+      <h1>{ format(caseNumbers) }</h1>
+      <PreviousWeeksView previousWeeks={latestTwoWeeks} />
+    </div>
+  )
+}
+
+function PreviousWeeksView(props) {
+  return (
+    <div className="PreviousWeeks">
+      <table>
+      { props.previousWeeks.map((week, index) => {
+        let previousWeekCount = props.previousWeeks[index+1]?.count
+        let weekCount = week.count
+        let approximate = false 
+        
+        if (weekCount === -99) {
+          weekCount = 0
+          approximate = true
+        }
+        
+        if (previousWeekCount === -99) {
+          previousWeekCount = 0
+          approximate = true
+        }
+        
+        const change = (previousWeekCount != null) ? weekCount - previousWeekCount : null
+        const sign = (change != null) && (change > 0 ? '+' : (change < 0 ? '' : '±'))
+        
+        return <tr>
+          <td>{week.range}:</td> 
+          <td><b>{ format(week.count) }</b></td>
+          { (change != null) && <td>({sign}{change}{approximate && ' [approx.]'})</td> }
+        </tr>
+      })}
+      </table>
+    </div>
   )
 }
 
