@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-sites
     strategy:
+      max-parallel: 1
       matrix:
         regions: ${{ fromJson(needs.get-sites.outputs.matrix) }}
 
