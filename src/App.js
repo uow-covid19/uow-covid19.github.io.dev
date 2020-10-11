@@ -14,7 +14,7 @@ class App extends React.Component {
   componentDidMount() {
     makeRequest(
       'GET', 
-      'https://c19downloads.azureedge.net/downloads/msoa_data/MSOAs_latest.json', 
+      'https://coronavirus.data.gov.uk/downloads/msoa_data/MSOAs_latest.json', 
       (err, data) => {
         const json = JSON.parse(data)
         const areas = json.data
