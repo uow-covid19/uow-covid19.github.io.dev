@@ -3,6 +3,7 @@ import React from 'react'
 // Used as the website title and header.
 export const LONG_NAME = "University of Nottingham"
 export const SHORT_NAME = "Notts"
+export const OFFICIAL_TRACKER_URL = null
 
 // A list of the msoa11_cd values for regions in the dataset
 // (e.g. E02000001 for City of London)
